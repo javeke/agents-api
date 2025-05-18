@@ -1,0 +1,58 @@
+{# templates/email/settlement_process_email.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Settlement Email</title>
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hi {{ receiver_name }},</h2>
+
+  <p>
+    Please see the attached documents outlining the reconciliation process
+    between WiPay and JMMB Bank for your review and records:
+  </p>
+
+  <ol>
+    <li style="padding: 16px 0">
+      <strong>Memo – WiPay Settlement Reconciliation Process:</strong>
+      A detailed overview of our internal workflow for reviewing and validating
+      settlement reports.
+    </li>
+
+    <li style="padding: 16px 0">
+      <strong>VisaNet Settlement Report – {{ visa_net_report_date }}:</strong>
+      Received from JMMB and summarizing total settlement amounts and
+      transaction count.
+    </li>
+
+    <li style="padding: 16px 0">
+      <strong>WiPay FAC Report – {{ fac_report_date }}:</strong>
+      Used for internal reconciliation, covering the period from 6:00&nbsp;AM
+      to 5:59&nbsp;AM on the report date.
+    </li>
+  </ol>
+
+  <p>
+    These documents are part of our continued effort to ensure a transparent
+    and aligned reconciliation process. Should you have any questions or
+    require additional information.
+  </p>
+
+  <p>
+    If you have any queries do not hesitate to contact us at
+    {{ contact_email }}.
+  </p>
+
+  <p>
+    <strong style="color:#156082; font-style:italic;">Warm Regards,</strong>
+  </p>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{# templates/email/daily_reconciliation_memo.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #333;
+      padding: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    .section {
+      margin-top: 1.5em;
+    }
+    .bold-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>MEMORANDUM</h1>
+
+  <div class="section">
+    <p><span class="bold-label">To:</span> {{ to }}</p>
+    <p><span class="bold-label">From:</span> {{ original_sender }}</p>
+    <p><span class="bold-label">Date:</span> {{ date }}</p>
+    <p><span class="bold-label">Subject:</span> {{ subject }}</p>
+  </div>
+
+  <div class="section">
+    <p>
+      Please find below the standard operating procedure for daily settlement
+      reconciliation between WiPay and JMMB Bank. This process ensures accuracy
+      and transparency in matching VisaNet settlements to WiPay’s internal
+      transaction records.
+    </p>
+
+    <p><strong>Daily Settlement Reconciliation Workflow</strong></p>
+
+    <ol>
+      <li>
+        <strong>Receipt of VisaNet Settlement Report</strong><br />
+        WiPay receives a daily email from JMMB with the attached VisaNet
+        Settlement Summary Report. This report outlines:
+        <ul>
+          <li>Total settlement amount (USD and/or TTD)</li>
+          <li>Number of processed transactions</li>
+          <li>Interchange values, reimbursement fees, and net amounts</li>
+          <li>No transaction-level breakdown is included in the summary.</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Internal Review of FAC Transaction Report</strong><br />
+        WiPay performs reconciliation using our FAC system report. This report
+        covers a 24-hour period:<br /><br />
+        <em>{{ fac_time_window }}</em><br /><br />
+        It includes transaction-level data to verify:
+        <ul>
+          <li>Total amount processed</li>
+          <li>Transaction count</li>
+          <li>Settlement time alignment</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Reconciliation &amp; Matching</strong><br />
+        The Finance team compares the VisaNet summary against the FAC report to
+        validate:
+        <ul>
+          <li>Total transaction value</li>
+          <li>Total transaction count</li>
+          <li>Applicable fees</li>
+          <li>Overall settlement accuracy</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Discrepancy Management</strong><br />
+        Any discrepancies are flagged and reviewed. WiPay will reach out to
+        JMMB for clarification and resolution.
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <p>
+      This memo and the attached reports aim to strengthen coordination and
+      ensure mutual understanding between both teams. We look forward to
+      continued collaboration in maintaining a seamless settlement process.
+    </p>
+
+    <p><strong>Prepared by:</strong> {{ prepared_by }}</p>
+  </div>
+</body>
+</html>

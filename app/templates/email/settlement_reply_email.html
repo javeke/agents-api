@@ -1,0 +1,67 @@
+{# templates/email/settlement_reply_email.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WiPay Settlement</title>
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 16px;
+      color: #333;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Good Day {{ receiver_name }},</h2>
+
+  <p>
+    Please see outlined below a breakdown of the settlements to be
+    settled into {{ settlement_account_name }}
+    ({{ settlement_account_currency_code }} – {{ settlement_account_number }})
+    for the period {{ visa_net_report_date }}, totalling
+    <strong style="background:yellow;">
+      $ {{ settlement_total }} {{ settlement_account_currency_code }}
+    </strong>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>VISA Report ID</th>
+        <th>VISA Settlement Date</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>FAC Settlement File</th>
+        <th>Settlement Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VSS-110</td>
+        <td>{{ visa_net_report_date }}</td>
+        <td>{{ settlement_total }}</td>
+        <td>{{ settlement_account_currency_code }}</td>
+        <td>{{ fac_report_file_name }}</td>
+        <td style="color:red; font-weight:bold;">Pending</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    If you have any queries do not hesitate to contact us at
+    {{ contact_email }}.
+  </p>
+
+  <p>
+    <strong style="color:#156082; font-style:italic;">Warm Regards,</strong>
+  </p>
+</body>
+</html>
